@@ -50,28 +50,22 @@ void Init_Board(Board* pb)
     pb->board[7][7] = rook_w;
 }
 
-void Print_Board(Board* pb, FILE* txt)
+void Print_Board(Board* pb)
 {
     int i, j;
     for (i = 7; i >= 0; --i) {
-        fprintf(txt, "%d", i + 1);
+        printf("%d", i + 1);
         for (j = 0; j < 8; ++j) {
-            fprintf(txt, " %c", pb->board[i][j]);
+            printf(" %c", pb->board[i][j]);
         }
-        fprintf(txt, "\n");
-    }   fprintf(txt, "  a b c d e f g h\n");
+        printf("\n");
+    }   printf("  a b c d e f g h\n");
 }
 
 int main()
 {
     Board Board;
-    FILE* txt = fopen("chessviz.txt", "w");
-    if (txt == NULL) {
-        printf("Возникла ошибка при открытии chessviz.txt");
-        return 0;
-    }
     Init_Board(&Board);
-    Print_Board(&Board, txt);
-    fclose(txt);
+    Print_Board(&Board);
     return 0;
 }
